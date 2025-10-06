@@ -16,9 +16,70 @@ public class Main {
             wordState.add('_');
 
         }
+        System.out.println("***********************");
+        System.out.println("Welcome to Java Hangman");
+        System.out.println("***********************");
 
+        // better formatting for the _
+        System.out.print("Word: ");
+        for (char c : wordState) {
+            System.out.print(c + " ");
+        }
+        System.out.println();
+
+        System.out.println("Guess a letter: ");
+        char guess = scanner.next().toLowerCase().charAt(0);
+
+        if (word.indexOf(guess) >= 0){
+            System.out.println("Correct guess!\n");
+        }
+
+        System.out.println(guess);
 
 
         scanner.close();
+    }
+
+    // Hangman art
+    static String getHangmanArt(int wrongGuesses) {
+
+        return switch (wrongGuesses) {
+            case 0 -> """
+                    
+                    
+                    
+                    """;
+            case 1 -> """
+                        o
+                    
+                    
+                    """;
+            case 2 -> """
+                        o
+                        |
+                    
+                    """;
+            case 3 -> """
+                        o
+                       /|
+                    
+                    """;
+            case 4 -> """
+                        o
+                       /|\\
+                    
+                    """;
+            case 5 -> """
+                        o
+                       /|\\
+                       /
+                    """;
+            case 6 -> """
+                        o
+                       /|\\
+                       / \\
+                    """;
+            default -> "";
+        };
     }
 }
