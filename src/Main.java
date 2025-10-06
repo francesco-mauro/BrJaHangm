@@ -21,20 +21,35 @@ public class Main {
         System.out.println("***********************");
 
         // better formatting for the _
-        System.out.print("Word: ");
-        for (char c : wordState) {
-            System.out.print(c + " ");
+
+        while (wrongGuesses < 6) {
+
+            System.out.print("Word: ");
+            for (char c : wordState) {
+                System.out.print(c + " ");
+            }
+            System.out.println();
+
+            System.out.print("Guess a letter: ");
+            char guess = scanner.next().toLowerCase().charAt(0);
+
+            if (word.indexOf(guess) >= 0) {
+                System.out.println("Correct guess!\n");
+
+                for (int i = 0; i < word.length(); i++) {
+                    if (word.charAt(i) == guess) {
+                        wordState.set(i, guess);
+                    }
+                }
+
+            } else {
+                System.out.println("Wrong guess");
+                wrongGuesses += 1;
+
+            }
         }
-        System.out.println();
 
-        System.out.println("Guess a letter: ");
-        char guess = scanner.next().toLowerCase().charAt(0);
-
-        if (word.indexOf(guess) >= 0){
-            System.out.println("Correct guess!\n");
-        }
-
-        System.out.println(guess);
+        System.out.println(wordState);
 
 
         scanner.close();
