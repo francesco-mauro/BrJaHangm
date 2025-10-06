@@ -5,7 +5,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String word = "pizza ";
+        String word = "pizza";
 
         Scanner scanner = new Scanner(System.in);
 
@@ -23,6 +23,8 @@ public class Main {
         // better formatting for the _
 
         while (wrongGuesses < 6) {
+
+            System.out.println(getHangmanArt(wrongGuesses));
 
             System.out.print("Word: ");
             for (char c : wordState) {
@@ -42,11 +44,23 @@ public class Main {
                     }
                 }
 
+                if (!wordState.contains('_')){
+                    System.out.println(getHangmanArt(wrongGuesses));
+                    System.out.println("YOU WIN!");
+                    System.out.println("The word is: " + word);
+                }
+
             } else {
                 System.out.println("Wrong guess");
-                wrongGuesses += 1;
+                wrongGuesses ++ ;
 
             }
+        }
+
+        if (wrongGuesses >= 6){
+            System.out.println(getHangmanArt(wrongGuesses));
+            System.out.println("GAME OVER");
+            System.out.println("The word was: " + word);
         }
 
         System.out.println(wordState);
