@@ -48,6 +48,7 @@ public class Main {
                     System.out.println(getHangmanArt(wrongGuesses));
                     System.out.println("YOU WIN!");
                     System.out.println("The word is: " + word);
+                    break;
                 }
 
             } else {
